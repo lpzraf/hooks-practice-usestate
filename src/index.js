@@ -1,12 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./styles.css";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function Theme() {
+  const [theme, setTheme] = React.useState('light')
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  const toDark = () => setTheme('dark')
+  const toLight = () => setTheme('light')
+
+  return (
+    <div className={theme}>
+      {theme === "light"
+        ? <button onClick={toDark}>🔦</button>
+        : <button onClick={toLight}>💡</button>}
+    </div>
+  )
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Theme />, rootElement);
